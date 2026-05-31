@@ -6,14 +6,6 @@ C:\Users\nourr\Desktop\NOUR\scantobim\FloorToPointCloud\bin\ReleaseBuild\FloorTo
 C:\Users\nourr\Desktop\NOUR\scantobim\FloorToPointCloud\bin\ReleaseBuild\Metrika.pdb
 C:\Users\nourr\Desktop\NOUR\scantobim\FloorToPointCloud\obj\Release\FloorToPointCloud.csproj.AssemblyReference.cache
 C:\Users\nourr\Desktop\NOUR\scantobim\FloorToPointCloud\obj\Release\FloorToPointCloud.csproj.CoreCompileInputs.cache
-C:\Users\nourr\Desktop\NOUR\scantobim\FloorToPointCloud\obj\Release\Metrika.dll
-C:\Users\nourr\Desktop\NOUR\scantobim\FloorToPointCloud\obj\Release\Metrika.pdb
-C:\Users\nourr\Desktop\NOUR\scantobim\FloorToPointCloud\bin\ReleaseBuild\2024\Metrika.addin
-C:\Users\nourr\Desktop\NOUR\scantobim\FloorToPointCloud\bin\ReleaseBuild\2024\Metrika.dll
-C:\Users\nourr\Desktop\NOUR\scantobim\FloorToPointCloud\bin\ReleaseBuild\2024\Metrika.pdb
-C:\Users\nourr\Desktop\NOUR\scantobim\FloorToPointCloud\bin\ReleaseBuild\2026\Metrika.addin
-C:\Users\nourr\Desktop\NOUR\scantobim\FloorToPointCloud\bin\ReleaseBuild\2026\Metrika.dll
-C:\Users\nourr\Desktop\NOUR\scantobim\FloorToPointCloud\bin\ReleaseBuild\2026\Metrika.pdb
 C:\Users\nourr\Desktop\NOUR\scantobim\FloorToPointCloud\bin\ReleaseBuild\2026\Scan2BIM.addin
 C:\Users\nourr\Desktop\NOUR\scantobim\FloorToPointCloud\bin\ReleaseBuild\2026\Scan2BIM.dll
 C:\Users\nourr\Desktop\NOUR\scantobim\FloorToPointCloud\bin\ReleaseBuild\2026\Scan2BIM.pdb

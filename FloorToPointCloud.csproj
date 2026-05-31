@@ -79,6 +79,6 @@
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>xcopy "$(TargetPath)" "C:\ProgramData\Autodesk\Revit\Addins\$(RevitVersion)\" /Y /I
-xcopy "$(ProjectDir)Scan2BIM.$(RevitVersion).addin" "C:\ProgramData\Autodesk\Revit\Addins\$(RevitVersion)\Scan2BIM.addin" /Y /I</PostBuildEvent>
+xcopy "$(ProjectDir)Scan2BIM.$(RevitVersion).addin" "C:\ProgramData\Autodesk\Revit\Addins\$(RevitVersion)\" /Y /I</PostBuildEvent>
   </PropertyGroup>
 </Project>
