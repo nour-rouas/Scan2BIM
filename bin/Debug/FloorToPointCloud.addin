@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RevitAddIns>
+  <AddIn Type="Application">
+    <Name>Scan2BIM</Name>
+    <Assembly>C:\ProgramData\Autodesk\Revit\Addins\2024\Metrika.dll</Assembly>
+    <AddInId>F1A2B3C4-D5E6-4789-90AB-CDEF12345678</AddInId>
+    <FullClassName>Metrika.App</FullClassName>
+    <VendorId>NourRouas</VendorId>
+    <VendorDescription>Nour Rouas</VendorDescription>
+    <VisibilityMode>AlwaysVisible</VisibilityMode>
+  </AddIn>
+</RevitAddIns>

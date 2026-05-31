@@ -1,0 +1,7 @@
+C:\Users\nourr\Desktop\NOUR\scantobim\FloorToPointCloud\obj\Debug\FloorToPointCloud.csproj.AssemblyReference.cache
+C:\Users\nourr\Desktop\NOUR\scantobim\FloorToPointCloud\obj\Debug\FloorToPointCloud.csproj.CoreCompileInputs.cache
+C:\Users\nourr\Desktop\NOUR\scantobim\FloorToPointCloud\bin\Debug\FloorToPointCloud.addin
+C:\Users\nourr\Desktop\NOUR\scantobim\FloorToPointCloud\bin\Debug\Metrika.dll
+C:\Users\nourr\Desktop\NOUR\scantobim\FloorToPointCloud\bin\Debug\Metrika.pdb
+C:\Users\nourr\Desktop\NOUR\scantobim\FloorToPointCloud\obj\Debug\Metrika.dll
+C:\Users\nourr\Desktop\NOUR\scantobim\FloorToPointCloud\obj\Debug\Metrika.pdb
