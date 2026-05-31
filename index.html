@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Scan2BIM — free open-source Revit plugin for point cloud measurement, 3D picking, and marker export/import. Built by Nour Rouas.">
+  <title>Scan2BIM — Open Source Revit Plugin</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0c0f14;
+      --bg-elevated: #141922;
+      --bg-card: #1a2030;
+      --border: rgba(255, 255, 255, 0.08);
+      --text: #e8ecf4;
+      --text-muted: #8b95a8;
+      --accent: #3b9eff;
+      --accent-soft: rgba(59, 158, 255, 0.12);
+      --accent-glow: rgba(59, 158, 255, 0.35);
+      --success: #34d399;
+      --radius: 14px;
+      --max-width: 1080px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: "DM Sans", system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+
+    .bg-grid {
+      position: fixed;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
+      background-size: 64px 64px;
+      mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, black, transparent);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .bg-glow {
+      position: fixed;
+      top: -20%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 900px;
+      height: 600px;
+      background: radial-gradient(circle, var(--accent-glow) 0%, transparent 70%);
+      filter: blur(80px);
+      opacity: 0.4;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    header, main, footer {
+      position: relative;
+      z-index: 1;
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-top: 28px;
+      padding-bottom: 28px;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 700;
+      font-size: 1.15rem;
+      letter-spacing: -0.02em;
+    }
+
+    .logo-mark {
+      width: 36px;
+      height: 36px;
+      border-radius: 10px;
+      background: linear-gradient(135deg, var(--accent), #6366f1);
+      display: grid;
+      place-items: center;
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: white;
+    }
+
+    nav {
+      display: flex;
+      gap: 28px;
+      align-items: center;
+    }
+
+    nav a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 0.92rem;
+      transition: color 0.2s;
+    }
+
+    nav a:hover { color: var(--text); }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 11px 20px;
+      border-radius: 10px;
+      font-weight: 600;
+      font-size: 0.92rem;
+      text-decoration: none;
+      transition: transform 0.15s, box-shadow 0.15s, background 0.15s;
+      border: none;
+      cursor: pointer;
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: #041018;
+      box-shadow: 0 0 24px var(--accent-glow);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 4px 32px var(--accent-glow);
+    }
+
+    .btn-secondary {
+      background: var(--bg-card);
+      color: var(--text);
+      border: 1px solid var(--border);
+    }
+
+    .btn-secondary:hover { background: var(--bg-elevated); }
+
+    .hero {
+      padding: 64px 0 80px;
+      text-align: center;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 14px;
+      border-radius: 999px;
+      background: var(--accent-soft);
+      border: 1px solid rgba(59, 158, 255, 0.25);
+      color: var(--accent);
+      font-size: 0.82rem;
+      font-weight: 500;
+      margin-bottom: 24px;
+    }
+
+    .badge-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--success);
+      box-shadow: 0 0 8px var(--success);
+    }
+
+    h1 {
+      font-size: clamp(2.4rem, 6vw, 3.6rem);
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      line-height: 1.1;
+      margin-bottom: 20px;
+    }
+
+    h1 span {
+      background: linear-gradient(135deg, var(--accent), #a78bfa);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero-sub {
+      font-size: 1.15rem;
+      color: var(--text-muted);
+      max-width: 620px;
+      margin: 0 auto 36px;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 14px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-bottom: 48px;
+    }
+
+    .revit-versions {
+      display: flex;
+      gap: 10px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .version-pill {
+      padding: 6px 14px;
+      border-radius: 8px;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      font-family: "JetBrains Mono", monospace;
+    }
+
+    section {
+      padding: 72px 0;
+    }
+
+    section h2 {
+      font-size: 1.75rem;
+      letter-spacing: -0.02em;
+      margin-bottom: 12px;
+    }
+
+    .section-lead {
+      color: var(--text-muted);
+      max-width: 560px;
+      margin-bottom: 40px;
+    }
+
+    .features {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+    }
+
+    .feature-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 28px;
+      transition: border-color 0.2s, transform 0.2s;
+    }
+
+    .feature-card:hover {
+      border-color: rgba(59, 158, 255, 0.3);
+      transform: translateY(-2px);
+    }
+
+    .feature-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      background: var(--accent-soft);
+      display: grid;
+      place-items: center;
+      font-size: 1.3rem;
+      margin-bottom: 16px;
+    }
+
+    .feature-card h3 {
+      font-size: 1.05rem;
+      margin-bottom: 8px;
+    }
+
+    .feature-card p {
+      color: var(--text-muted);
+      font-size: 0.92rem;
+    }
+
+    .download-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 16px;
+      margin-bottom: 32px;
+    }
+
+    .download-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .download-card h3 {
+      font-family: "JetBrains Mono", monospace;
+      font-size: 1rem;
+      color: var(--accent);
+    }
+
+    .download-card p {
+      color: var(--text-muted);
+      font-size: 0.88rem;
+      flex: 1;
+    }
+
+    .steps {
+      background: var(--bg-elevated);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 32px;
+    }
+
+    .steps ol {
+      padding-left: 20px;
+      color: var(--text-muted);
+    }
+
+    .steps li {
+      margin-bottom: 12px;
+    }
+
+    .steps code, .steps kbd {
+      font-family: "JetBrains Mono", monospace;
+      font-size: 0.85rem;
+      background: var(--bg-card);
+      padding: 2px 8px;
+      border-radius: 6px;
+      color: var(--text);
+    }
+
+    .author {
+      display: grid;
+      grid-template-columns: 1fr 1.2fr;
+      gap: 40px;
+      align-items: center;
+      background: linear-gradient(135deg, var(--bg-card), var(--bg-elevated));
+      border: 1px solid var(--border);
+      border-radius: calc(var(--radius) + 4px);
+      padding: 48px;
+    }
+
+    .author-avatar {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--accent), #6366f1);
+      display: grid;
+      place-items: center;
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: white;
+      margin-bottom: 20px;
+    }
+
+    .author h3 {
+      font-size: 1.5rem;
+      margin-bottom: 4px;
+    }
+
+    .author-role {
+      color: var(--accent);
+      font-weight: 500;
+      margin-bottom: 16px;
+    }
+
+    .author p {
+      color: var(--text-muted);
+      margin-bottom: 20px;
+    }
+
+    .author-links {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    footer {
+      padding: 48px 24px 64px;
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 0.88rem;
+      border-top: 1px solid var(--border);
+      margin-top: 40px;
+    }
+
+    footer a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    @media (max-width: 768px) {
+      nav { display: none; }
+      .author { grid-template-columns: 1fr; text-align: center; }
+      .author-avatar { margin: 0 auto 20px; }
+      .author-links { justify-content: center; }
+    }
+  </style>
+</head>
+<body>
+  <div class="bg-grid"></div>
+  <div class="bg-glow"></div>
+
+  <header>
+    <div class="logo">
+      <div class="logo-mark">S2B</div>
+      Scan2BIM
+    </div>
+    <nav>
+      <a href="#features">Features</a>
+      <a href="#download">Download</a>
+      <a href="#install">Install</a>
+      <a href="#author">Author</a>
+      <a href="https://github.com/nourrouas/scan2bim" class="btn btn-secondary" target="_blank" rel="noopener">GitHub</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="badge">
+        <span class="badge-dot"></span>
+        Open source · Free · Revit 2024+
+      </div>
+      <h1>Point cloud tools for <span>Revit</span></h1>
+      <p class="hero-sub">
+        Scan2BIM helps you measure, pick coordinates, and exchange marker data between point clouds and your BIM model — directly inside Revit.
+      </p>
+      <div class="hero-actions">
+        <a href="#download" class="btn btn-primary">Download for Revit</a>
+        <a href="https://github.com/nourrouas/scan2bim" class="btn btn-secondary" target="_blank" rel="noopener">View source code</a>
+      </div>
+      <div class="revit-versions">
+        <span class="version-pill">Revit 2024</span>
+        <span class="version-pill">Revit 2025</span>
+        <span class="version-pill">Revit 2026</span>
+        <span class="version-pill">2027+ ready</span>
+      </div>
+    </section>
+
+    <section id="features">
+      <h2>Built for scan-to-BIM workflows</h2>
+      <p class="section-lead">Practical tools for modelers working with laser scans and as-built verification.</p>
+      <div class="features">
+        <article class="feature-card">
+          <div class="feature-icon">☁</div>
+          <h3>Point cloud visibility</h3>
+          <p>Quickly hide or show all point clouds in the active view — no digging through visibility settings.</p>
+        </article>
+        <article class="feature-card">
+          <div class="feature-icon">📍</div>
+          <h3>Pick coordinates on cloud</h3>
+          <p>Click a point on the scan and get precise X, Y, Z coordinates using Revit's native snaps.</p>
+        </article>
+        <article class="feature-card">
+          <div class="feature-icon">📐</div>
+          <h3>Measure on building elements</h3>
+          <p>Pick a point on floors, walls, roofs, stairs, columns, toposolids, and more — in 2D or 3D views.</p>
+        </article>
+        <article class="feature-card">
+          <div class="feature-icon">↔</div>
+          <h3>Export & import markers</h3>
+          <p>Exchange pinpoint markers as CSV or JSON for coordination, QA/QC, and field-to-model workflows.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="download">
+      <h2>Download</h2>
+      <p class="section-lead">Choose the package that matches your Revit version. Each zip includes the plugin and a one-click installer.</p>
+      <div class="download-grid" id="download-links">
+        <div class="download-card">
+          <h3>Revit 2024</h3>
+          <p>For Autodesk Revit 2024 on Windows.</p>
+          <a class="btn btn-primary" href="https://github.com/nourrouas/scan2bim/releases/latest/download/Scan2BIM-Revit2024.zip">Download .zip</a>
+        </div>
+        <div class="download-card">
+          <h3>Revit 2025</h3>
+          <p>For Autodesk Revit 2025 on Windows.</p>
+          <a class="btn btn-primary" href="https://github.com/nourrouas/scan2bim/releases/latest/download/Scan2BIM-Revit2025.zip">Download .zip</a>
+        </div>
+        <div class="download-card">
+          <h3>Revit 2026</h3>
+          <p>For Autodesk Revit 2026 on Windows.</p>
+          <a class="btn btn-primary" href="https://github.com/nourrouas/scan2bim/releases/latest/download/Scan2BIM-Revit2026.zip">Download .zip</a>
+        </div>
+      </div>
+      <p style="color: var(--text-muted); font-size: 0.88rem;">
+        All releases are on <a href="https://github.com/nourrouas/scan2bim/releases" style="color: var(--accent);">GitHub Releases</a>.
+        MIT licensed — free for personal and commercial use.
+      </p>
+    </section>
+
+    <section id="install">
+      <h2>Installation</h2>
+      <p class="section-lead">Takes less than a minute. Close Revit first.</p>
+      <div class="steps">
+        <ol>
+          <li>Download the zip for your Revit version and extract it anywhere.</li>
+          <li>Right-click <code>install.ps1</code> and choose <strong>Run with PowerShell</strong>, or open PowerShell in that folder and run:<br><br><code>.\install.ps1</code></li>
+          <li>Open Revit — you'll see a new <strong>Scan2BIM</strong> ribbon tab.</li>
+        </ol>
+        <p style="margin-top: 20px; color: var(--text-muted); font-size: 0.88rem;">
+          Manual install: copy <code>Scan2BIM.dll</code> and <code>Scan2BIM.addin</code> to
+          <code>%ProgramData%\Autodesk\Revit\Addins\20XX\</code> (replace 20XX with your version).
+        </p>
+      </div>
+    </section>
+
+    <section id="author">
+      <div class="author">
+        <div>
+          <div class="author-avatar">NR</div>
+        </div>
+        <div>
+          <h3>Nour Rouas</h3>
+          <p class="author-role">Revit Modeler & Developer</p>
+          <p>
+            Scan2BIM is an open-source project built from real scan-to-BIM workflows — measuring as-built conditions,
+            coordinating point clouds with models, and making everyday Revit tasks faster for the AEC community.
+          </p>
+          <div class="author-links">
+            <a href="https://github.com/nourrouas/scan2bim" class="btn btn-secondary" target="_blank" rel="noopener">GitHub</a>
+            <a href="https://github.com/nourrouas/scan2bim/issues" class="btn btn-secondary" target="_blank" rel="noopener">Report an issue</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>
+      Scan2BIM · Open source under the <a href="https://github.com/nourrouas/scan2bim/blob/main/LICENSE">MIT License</a><br>
+      Built by <strong>Nour Rouas</strong> · Not affiliated with Autodesk
+    </p>
+  </footer>
+
+  <script>
+    // Update download links automatically once the repo is published.
+    const REPO = "nourrouas/scan2bim";
+    document.querySelectorAll('#download-links a.btn-primary').forEach(link => {
+      const match = link.closest('.download-card')?.querySelector('h3')?.textContent?.match(/\d{4}/);
+      if (match) {
+        link.href = `https://github.com/${REPO}/releases/latest/download/Scan2BIM-Revit${match[0]}.zip`;
+      }
+    });
+  </script>
+</body>
+</html>
