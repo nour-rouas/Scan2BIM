@@ -1,0 +1,27 @@
+# Build artifacts must be created on a Windows machine with Revit installed.
+# This workflow packages and publishes pre-built zips when you create a release.
+
+name: Publish Release
+
+on:
+  release:
+    types: [published]
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: 'Release tag (e.g. v1.0.0)'
+        required: true
+
+jobs:
+  note:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Release instructions
+        run: |
+          echo "Scan2BIM releases are built locally on Windows with Revit installed."
+          echo ""
+          echo "On your dev machine:"
+          echo "  1. .\\build-release.ps1"
+          echo "  2. gh release create v1.0.0 dist/*.zip --title \"Scan2BIM v1.0.0\""
+          echo ""
+          echo "Or upload dist/Scan2BIM-Revit20XX.zip files manually in the GitHub Releases UI."
