@@ -85,8 +85,8 @@ function Deploy-Scan2Bim {
         [string]$ProjectRoot = (Join-Path $PSScriptRoot "..")
     )
 
-    $sourceDll = Join-Path $ProjectRoot "bin\ReleaseBuild\$Version\Metrika.dll"
-    $addinSrc = Join-Path $ProjectRoot "Metrika.$Version.addin"
+    $sourceDll = Join-Path $ProjectRoot "bin\ReleaseBuild\$Version\Scan2BIM.dll"
+    $addinSrc = Join-Path $ProjectRoot "Scan2BIM.$Version.addin"
 
     if (-not (Test-Path $sourceDll)) {
         throw "Compiled DLL not found for Revit $Version at $sourceDll"
@@ -98,12 +98,12 @@ function Deploy-Scan2Bim {
     $destDir = Get-RevitAddinsDir -Version $Version
     New-Item -ItemType Directory -Force -Path $destDir | Out-Null
 
-    Copy-Item $sourceDll (Join-Path $destDir "Metrika.dll") -Force
+    Copy-Item $sourceDll (Join-Path $destDir "Scan2BIM.dll") -Force
 
-    $disabledPath = Join-Path $destDir "Metrika.addin.disabled"
+    $disabledPath = Join-Path $destDir "Scan2BIM.addin.disabled"
     if (Test-Path $disabledPath) { Remove-Item $disabledPath -Force }
 
-    Copy-Item $addinSrc (Join-Path $destDir "Metrika.addin") -Force
+    Copy-Item $addinSrc (Join-Path $destDir "Scan2BIM.addin") -Force
     Write-Host "Deployed to $destDir" -ForegroundColor Green
 }
 
@@ -114,8 +114,8 @@ function New-Scan2BimReleaseZip {
         [string]$OutputDir = (Join-Path $PSScriptRoot "..\dist")
     )
 
-    $sourceDll = Join-Path $ProjectRoot "bin\ReleaseBuild\$Version\Metrika.dll"
-    $addinSrc = Join-Path $ProjectRoot "Metrika.$Version.addin"
+    $sourceDll = Join-Path $ProjectRoot "bin\ReleaseBuild\$Version\Scan2BIM.dll"
+    $addinSrc = Join-Path $ProjectRoot "Scan2BIM.$Version.addin"
     $installScript = Join-Path $PSScriptRoot "install.ps1"
 
     if (-not (Test-Path $sourceDll)) {
@@ -128,8 +128,8 @@ function New-Scan2BimReleaseZip {
     if (Test-Path $staging) { Remove-Item $staging -Recurse -Force }
     New-Item -ItemType Directory -Force -Path $staging | Out-Null
 
-    Copy-Item $sourceDll (Join-Path $staging "Metrika.dll")
-    Copy-Item $addinSrc (Join-Path $staging "Metrika.addin")
+    Copy-Item $sourceDll (Join-Path $staging "Scan2BIM.dll")
+    Copy-Item $addinSrc (Join-Path $staging "Scan2BIM.addin")
     Copy-Item $installScript (Join-Path $staging "install.ps1")
 
     $zipPath = Join-Path $OutputDir "Scan2BIM-Revit$Version.zip"

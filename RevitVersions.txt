@@ -1,5 +1,5 @@
 # Supported Revit versions (one per line).
-# Add a new year here, then create Metrika.20XX.addin and rebuild.
+# Add a new year here, then create Scan2BIM.20XX.addin and rebuild.
 2024
 2025
 2026

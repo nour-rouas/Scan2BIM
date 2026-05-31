@@ -5,9 +5,9 @@ using Autodesk.Revit.DB;
 using Autodesk.Revit.DB.PointClouds;
 using Autodesk.Revit.UI;
 using Autodesk.Revit.UI.Selection;
-using Metrika.Utils;
+using Scan2BIM.Utils;
 
-namespace Metrika.Commands
+namespace Scan2BIM.Commands
 {
     [Transaction(TransactionMode.ReadOnly)]
     public class DiscoverPointCloudApiCommand : IExternalCommand

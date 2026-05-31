@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using Autodesk.Revit.DB;
 
-namespace Metrika.Utils
+namespace Scan2BIM.Utils
 {
     /// <summary>
     /// Creates DirectShape "pinpoint" markers in the model.

@@ -1,5 +1,5 @@
 # Scan2BIM installer
-# Installs Metrika.dll and Metrika.addin into the Revit Addins folder.
+# Installs Scan2BIM.dll and Scan2BIM.addin into the Revit Addins folder.
 #
 # Usage:
 #   .\install.ps1              # auto-detect installed Revit versions
@@ -35,14 +35,14 @@ function Get-TargetVersions {
 }
 
 $scriptDir = Split-Path -Parent $MyInvocation.MyCommand.Path
-$dll = Join-Path $scriptDir "Metrika.dll"
-$addin = Join-Path $scriptDir "Metrika.addin"
+$dll = Join-Path $scriptDir "Scan2BIM.dll"
+$addin = Join-Path $scriptDir "Scan2BIM.addin"
 
 if (-not (Test-Path $dll)) {
-    throw "Metrika.dll not found next to this script."
+    throw "Scan2BIM.dll not found next to this script."
 }
 if (-not (Test-Path $addin)) {
-    throw "Metrika.addin not found next to this script."
+    throw "Scan2BIM.addin not found next to this script."
 }
 
 $revit = Get-Process -Name "Revit" -ErrorAction SilentlyContinue
@@ -56,10 +56,10 @@ foreach ($version in $versions) {
     $destDir = Join-Path $env:ProgramData "Autodesk\Revit\Addins\$version"
     New-Item -ItemType Directory -Force -Path $destDir | Out-Null
 
-    Copy-Item $dll (Join-Path $destDir "Metrika.dll") -Force
-    Copy-Item $addin (Join-Path $destDir "Metrika.addin") -Force
+    Copy-Item $dll (Join-Path $destDir "Scan2BIM.dll") -Force
+    Copy-Item $addin (Join-Path $destDir "Scan2BIM.addin") -Force
 
-    $disabled = Join-Path $destDir "Metrika.addin.disabled"
+    $disabled = Join-Path $destDir "Scan2BIM.addin.disabled"
     if (Test-Path $disabled) { Remove-Item $disabled -Force }
 
     Write-Host "Scan2BIM installed for Revit $version" -ForegroundColor Green

@@ -5,7 +5,7 @@ using Autodesk.Revit.DB;
 using Autodesk.Revit.UI;
 using Autodesk.Revit.UI.Selection;
 
-namespace Metrika.Commands
+namespace Scan2BIM.Commands
 {
     /// <summary>
     /// Lets the user click any face of a common building element

@@ -5,7 +5,7 @@ using Autodesk.Revit.DB;
 using Autodesk.Revit.DB.PointClouds;
 using Autodesk.Revit.UI;
 
-namespace Metrika.Utils
+namespace Scan2BIM.Utils
 {
     /// <summary>
     /// Utility para descubrir los métodos reales disponibles en la API de Point Cloud

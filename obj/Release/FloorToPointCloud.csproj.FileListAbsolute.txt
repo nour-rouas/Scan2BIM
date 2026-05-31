@@ -14,3 +14,11 @@ C:\Users\nourr\Desktop\NOUR\scantobim\FloorToPointCloud\bin\ReleaseBuild\2024\Me
 C:\Users\nourr\Desktop\NOUR\scantobim\FloorToPointCloud\bin\ReleaseBuild\2026\Metrika.addin
 C:\Users\nourr\Desktop\NOUR\scantobim\FloorToPointCloud\bin\ReleaseBuild\2026\Metrika.dll
 C:\Users\nourr\Desktop\NOUR\scantobim\FloorToPointCloud\bin\ReleaseBuild\2026\Metrika.pdb
+C:\Users\nourr\Desktop\NOUR\scantobim\FloorToPointCloud\bin\ReleaseBuild\2026\Scan2BIM.addin
+C:\Users\nourr\Desktop\NOUR\scantobim\FloorToPointCloud\bin\ReleaseBuild\2026\Scan2BIM.dll
+C:\Users\nourr\Desktop\NOUR\scantobim\FloorToPointCloud\bin\ReleaseBuild\2026\Scan2BIM.pdb
+C:\Users\nourr\Desktop\NOUR\scantobim\FloorToPointCloud\obj\Release\Scan2BIM.dll
+C:\Users\nourr\Desktop\NOUR\scantobim\FloorToPointCloud\obj\Release\Scan2BIM.pdb
+C:\Users\nourr\Desktop\NOUR\scantobim\FloorToPointCloud\bin\ReleaseBuild\2024\Scan2BIM.addin
+C:\Users\nourr\Desktop\NOUR\scantobim\FloorToPointCloud\bin\ReleaseBuild\2024\Scan2BIM.dll
+C:\Users\nourr\Desktop\NOUR\scantobim\FloorToPointCloud\bin\ReleaseBuild\2024\Scan2BIM.pdb

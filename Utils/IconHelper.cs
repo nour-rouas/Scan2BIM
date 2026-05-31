@@ -5,7 +5,7 @@ using System.Drawing.Imaging;
 using System.IO;
 using System.Windows.Media.Imaging;
 
-namespace Metrika.Utils
+namespace Scan2BIM.Utils
 {
     /// <summary>
     /// Generates toolbar icons procedurally — no external image files needed.

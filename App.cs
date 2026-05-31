@@ -1,8 +1,8 @@
-﻿using System;
+using System;
 using Autodesk.Revit.UI;
 using System.Reflection;
 
-namespace Metrika
+namespace Scan2BIM
 {
     public class App : IExternalApplication
     {
@@ -19,14 +19,14 @@ namespace Metrika
 
                 PushButtonData btnHide = new PushButtonData(
                     "HideUnhidePointCloud", "Ocultar /\nMostrar", assemblyPath,
-                    "Metrika.Commands.HideUnhidePointCloudCommand")
+                    "Scan2BIM.Commands.HideUnhidePointCloudCommand")
                 {
                     ToolTip = "Alterna la visibilidad de todas las nubes de puntos en la vista activa"
                 };
 
                 PushButtonData btnMedirNube = new PushButtonData(
                     "PickPointCoordinates", "Medir Punto\nen Nube", assemblyPath,
-                    "Metrika.Commands.PickPointCoordinatesCommand")
+                    "Scan2BIM.Commands.PickPointCoordinatesCommand")
                 {
                     ToolTip         = "Haz clic en la nube de puntos y obtén X, Y, Z",
                     LongDescription = "Funciona en vistas 2D y 3D. Usa los snaps nativos de Revit. Requiere snap a nube de puntos activado."
@@ -51,7 +51,7 @@ namespace Metrika
 
                 PushButtonData btnElem = new PushButtonData(
                     "MeasureElementFace", "Medir Punto\nen Elemento", assemblyPath,
-                    "Metrika.Commands.MeasureElementFaceCommand")
+                    "Scan2BIM.Commands.MeasureElementFaceCommand")
                 {
                     ToolTip         = "Haz clic sobre cualquier cara de suelo, muro, techo, escalera… y obtén X, Y, Z",
                     LongDescription = "Funciona en vistas 2D y 3D. Soporta: Suelos, Muros, Techos, Escaleras, Barandillas, Columnas, Forjados estructurales, Rampas, Toposolid y Modelos Genéricos."
@@ -69,14 +69,14 @@ namespace Metrika
 
                 PushButtonData btnExportMarkers = new PushButtonData(
                     "ExportMarkers", "Exportar\nCSV/JSON", assemblyPath,
-                    "Metrika.Commands.ExportMarkersCommand")
+                    "Scan2BIM.Commands.ExportMarkersCommand")
                 {
                     ToolTip = "Exporta marcadores Pinpoint a archivo CSV o JSON"
                 };
 
                 PushButtonData btnImportMarkers = new PushButtonData(
                     "ImportMarkers", "Importar\nCSV/JSON", assemblyPath,
-                    "Metrika.Commands.ImportMarkersCommand")
+                    "Scan2BIM.Commands.ImportMarkersCommand")
                 {
                     ToolTip = "Importa marcadores desde CSV o JSON y los crea en el modelo"
                 };

@@ -13,7 +13,7 @@ Built by **Nour Rouas** — Revit Modeler & Developer.
 | 2024  | Supported |
 | 2025  | Supported |
 | 2026  | Supported |
-| 2027+ | Add the year to `RevitVersions.txt` and create `Metrika.20XX.addin` |
+| 2027+ | Add the year to `RevitVersions.txt` and create `Scan2BIM.20XX.addin` |
 
 Each Revit year needs its own build (Revit API is version-specific). The same source code compiles for all supported versions.
 
@@ -49,7 +49,7 @@ msbuild FloorToPointCloud.sln /p:Configuration=Release /p:RevitVersion=2025
 ### Adding a new Revit year (e.g. 2027)
 
 1. Add `2027` to `RevitVersions.txt`
-2. Copy `Metrika.2026.addin` → `Metrika.2027.addin`
+2. Copy `Scan2BIM.2026.addin` → `Scan2BIM.2027.addin`
 3. Run `.\build-release.ps1`
 
 ## Project structure
@@ -59,7 +59,7 @@ FloorToPointCloud/
 ├── App.cs                 # Ribbon setup
 ├── Commands/              # Revit external commands
 ├── Utils/                 # Helpers (icons, markers, geometry)
-├── Metrika.20XX.addin     # Per-version add-in manifests
+├── Scan2BIM.20XX.addin     # Per-version add-in manifests
 ├── RevitVersions.txt      # Supported Revit years
 ├── deploy.ps1             # Build + deploy locally
 ├── build-release.ps1      # Build + package zips
@@ -69,11 +69,24 @@ FloorToPointCloud/
 
 ## Publish the landing page (GitHub Pages)
 
+### One-time setup (required)
+
 1. Push this repo to GitHub (e.g. `nourrouas/scan2bim`).
-2. **Settings → Pages → Build from branch → `/docs` → Save.**
-3. Your site will be at `https://nourrouas.github.io/scan2bim/`.
+2. Open **Settings → Actions → General → Workflow permissions** and choose **Read and write permissions**, then Save.
+3. Open **Settings → Pages**:
+   - **Build and deployment → Source:** `Deploy from a branch`
+   - **Branch:** `gh-pages` / `/ (root)` → Save
+4. Push any change under `docs/` (or run the **Deploy GitHub Pages** workflow manually from the Actions tab).
+
+The workflow pushes your site to the `gh-pages` branch. After the first successful run, wait 1–2 minutes, then open:
+
+`https://YOUR_USERNAME.github.io/YOUR_REPO/`
 
 Update GitHub URLs in `docs/index.html` if your username or repo name differs.
+
+### If you see "Get Pages site failed"
+
+That error comes from the old GitHub Actions Pages workflow when Pages was not enabled yet. The current workflow uses branch deploy instead — re-run **Deploy GitHub Pages** after completing the steps above.
 
 ## Publish a release
 

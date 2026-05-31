@@ -1,7 +1,7 @@
 using System;
 using Autodesk.Revit.DB;
 
-namespace Metrika.Utils
+namespace Scan2BIM.Utils
 {
     /// <summary>
     /// Utilidades para manejo de transacciones

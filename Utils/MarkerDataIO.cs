@@ -9,7 +9,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using Autodesk.Revit.DB;
 
-namespace Metrika.Utils
+namespace Scan2BIM.Utils
 {
     [DataContract]
     internal sealed class MarkerRecord
