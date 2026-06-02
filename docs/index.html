@@ -100,10 +100,9 @@
     .logo {
       display: flex;
       align-items: center;
-      gap: 10px;
       font-family: var(--font-display);
       font-weight: 600;
-      font-size: 1rem;
+      font-size: 1.3rem;
       letter-spacing: -0.01em;
       color: var(--text);
       text-decoration: none;
@@ -512,13 +511,8 @@
       border-radius: 50%;
       border: 1px solid var(--accent-border);
       background: var(--accent-soft);
-      display: grid;
-      place-items: center;
-      font-family: var(--font-display);
-      font-size: 1.4rem;
-      font-weight: 600;
-      color: var(--accent);
-      letter-spacing: -0.02em;
+      display: block;
+      object-fit: cover;
     }
 
     .author-body h3 {
@@ -530,7 +524,7 @@
     }
 
     .author-role {
-      color: var(--text-dim);
+      color: var(--text-muted);
       font-size: 0.85rem;
       margin-bottom: 14px;
       text-transform: uppercase;
@@ -588,12 +582,7 @@
 
   <header>
     <div class="container header-row">
-      <a href="#" class="logo">
-        <span class="logo-mark" aria-hidden="true">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h4l3-9 4 18 3-9h4"/></svg>
-        </span>
-        Scan2BIM
-      </a>
+      <a href="#" class="logo">Scan2BIM</a>
       <nav>
         <div class="nav-links" style="display:flex; gap:24px;">
           <a href="#features">Features</a>
@@ -696,8 +685,8 @@
            <div class="download-row">
              <span class="download-version">Revit 2025</span>
              <span class="download-desc">For Autodesk Revit 2025 on Windows.</span>
-             <a class="download-link" href="https://github.com/nour-rouas/Scan2BIM/releases">
-               View releases
+             <a class="download-link" href="https://github.com/nour-rouas/Scan2BIM/releases/latest/download/Scan2BIM-Revit2025.zip">
+               Download .zip
                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12m0 0l-4-4m4 4l4-4M5 21h14"/></svg>
              </a>
           </div>
@@ -765,17 +754,27 @@
           <h2>Built from real AEC work</h2>
         </div>
         <div class="author">
-          <div class="author-avatar">NR</div>
+          <img class="author-avatar" src="profile_pic.jpg" alt="Nour Rouas" loading="lazy">
           <div class="author-body">
-            <h3>Nour Rouas</h3>
-            <div class="author-role">Revit Modeler &amp; Developer</div>
+            <h2>Nour Rouas</h2>
+            <div class="author-role">BIM Modeler &amp; Developer</div>
             <p>
               Scan2BIM is an open-source project built from real scan-to-BIM workflows — measuring as-built conditions,
               coordinating point clouds with models, and making everyday Revit tasks faster for the AEC community.
             </p>
             <div class="author-links">
-              <a class="btn btn-secondary" href="#" target="_blank" rel="noopener">GitHub</a>
-              <a class="btn btn-secondary" href="#" target="_blank" rel="noopener">Report an issue</a>
+              <a class="btn btn-secondary" href="https://github.com/nour-rouas/Scan2BIM" target="_blank" rel="noopener">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+                GitHub
+              </a>
+              <a class="btn btn-secondary" href="https://www.linkedin.com/in/nour-rouas/" target="_blank" rel="noopener">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+                LinkedIn
+              </a>
+              <a class="btn btn-secondary" href="https://www.instagram.com/nour.rouas/" target="_blank" rel="noopener">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+                Instagram
+              </a>
             </div>
           </div>
         </div>
