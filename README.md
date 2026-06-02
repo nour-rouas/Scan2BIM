@@ -28,8 +28,9 @@ Each Revit year needs its own build (Revit API is version-specific). The same so
 
 1. Go to [GitHub Releases](https://github.com/nourrouas/scan2bim/releases) (update the URL after publishing).
 2. Download the zip for your Revit version (`Scan2BIM-Revit2024.zip`, etc.).
-3. Extract and run `install.ps1` (close Revit first).
-4. Open Revit — look for the **Scan2BIM** ribbon tab.
+3. If Windows blocks the download, right-click the zip, choose Properties, and select Unblock (or run `Unblock-File` in PowerShell) before extracting.
+4. Extract and run `install.ps1` (close Revit first).
+5. Open Revit — look for the **Scan2BIM** ribbon tab.
 
 ## Build from source (developers)
 

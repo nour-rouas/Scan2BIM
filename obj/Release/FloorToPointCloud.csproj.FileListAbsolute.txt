@@ -14,3 +14,13 @@ C:\Users\nourr\Desktop\NOUR\scantobim\FloorToPointCloud\obj\Release\Scan2BIM.pdb
 C:\Users\nourr\Desktop\NOUR\scantobim\FloorToPointCloud\bin\ReleaseBuild\2024\Scan2BIM.addin
 C:\Users\nourr\Desktop\NOUR\scantobim\FloorToPointCloud\bin\ReleaseBuild\2024\Scan2BIM.dll
 C:\Users\nourr\Desktop\NOUR\scantobim\FloorToPointCloud\bin\ReleaseBuild\2024\Scan2BIM.pdb
+C:\Users\tecnico24\Desktop\NOUR ROUAS\scan2bim\bin\ReleaseBuild\2024\Scan2BIM.addin
+C:\Users\tecnico24\Desktop\NOUR ROUAS\scan2bim\bin\ReleaseBuild\2024\Scan2BIM.dll
+C:\Users\tecnico24\Desktop\NOUR ROUAS\scan2bim\bin\ReleaseBuild\2024\Scan2BIM.pdb
+C:\Users\tecnico24\Desktop\NOUR ROUAS\scan2bim\obj\Release\FloorToPointCloud.csproj.AssemblyReference.cache
+C:\Users\tecnico24\Desktop\NOUR ROUAS\scan2bim\obj\Release\FloorToPointCloud.csproj.CoreCompileInputs.cache
+C:\Users\tecnico24\Desktop\NOUR ROUAS\scan2bim\obj\Release\Scan2BIM.dll
+C:\Users\tecnico24\Desktop\NOUR ROUAS\scan2bim\obj\Release\Scan2BIM.pdb
+C:\Users\tecnico24\Desktop\NOUR ROUAS\scan2bim\bin\ReleaseBuild\2025\Scan2BIM.addin
+C:\Users\tecnico24\Desktop\NOUR ROUAS\scan2bim\bin\ReleaseBuild\2025\Scan2BIM.dll
+C:\Users\tecnico24\Desktop\NOUR ROUAS\scan2bim\bin\ReleaseBuild\2025\Scan2BIM.pdb
